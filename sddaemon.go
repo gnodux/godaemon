@@ -42,7 +42,7 @@ func init() {
 			watchdogUpdateDuration = time.Duration((micsec / 2)) * time.Microsecond
 		}
 	}
-	//log.Println(notifySocketAddr)
+
 	if len(notifySocketAddr) > 0 {
 		notifySocket, err = net.Dial("unixgram", notifySocketAddr)
 		if err != nil {
@@ -76,6 +76,7 @@ func FeedWatchDog() error {
 	return SD_Notify(DEAMON_WATCHDOG)
 }
 
+//KeepDeamonAlive
 func KeepDeamonAlive() {
 	if err := checkSocket(); err != nil {
 		return
